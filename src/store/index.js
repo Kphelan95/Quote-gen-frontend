@@ -20,13 +20,13 @@ export const store = new Vuex.Store({
             { quote: 'The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart.' , author:"Helen Keller"},
             { quote: 'Whoever is happy will make others happy too', author:"Anne Frank" }
         ],
-        test:[{test : "1"}]
+        test:[{test : "1"}],
     },
     mutations: {
         change(state, quotes) {
           state.quotes = quotes;
         },
-        SAVE_TEST(state, test) {
+        SAVE_QUOTE(state, test) {
             state.test = test;// here i need to add on to
             console.log(test);
           }
@@ -37,11 +37,11 @@ export const store = new Vuex.Store({
 
       },
     actions: {
-        loadTest({commit}) {
+        loadQuotes({commit}) {
             const request = new Request('http://localhost:3000/quotes', {method: 'GET', headers : { 'Content-Type': 'application/json','Accept': 'application/json','Access-Control-Allow-Origin': '*'} });
             fetch(request)
             .then(result =>{return result.json()})
-            .then(data =>{commit('SAVE_TEST', data)})
+            .then(data =>{commit('SAVE_QUOTE', data)})
             .catch(error => {throw new Error(`API ${error}`)})
         }
       }

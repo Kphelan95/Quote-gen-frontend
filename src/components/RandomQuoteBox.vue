@@ -5,26 +5,25 @@
         <h3>- {{author}} </h3>    
     </div>
     <button class="left">Delete Quote</button>
-    <button class="left"  @click="popUp = true">add new Quote</button>   
+    <Popup> </Popup>
     <button class="right" v-on:click="newQuote">New Quote</button>
-    <popUp/>
 </div>
 </template>
 
 
 <script>
 import { mapState } from 'vuex';
-import popUp from 'C:/Users/tromb/Desktop/vue/random-quote/src/components/Popup.vue'
+import Popup from './Popup'
 
 export default {
   name: 'randomQuote',
   props: {},
   components: {
-    popUp
+      Popup
   },
   mounted(){
       this.newQuote();
-      this.$store.dispatch('loadTest');// this will add to the store when the compent is loaded
+      this.$store.dispatch('loadQuotes');// this will add to the store when the compent is loaded
   },
   computed: {
      ...mapState(['test'])
@@ -50,9 +49,6 @@ export default {
           .then(data =>{console.log(data);});
           */
           //console.log(this.$store.getters.quoteHolderVX[0]);
-      },
-      popUp : function(){
-          alert("Hello\nHow are you?");
       }
   },
   data : function (){

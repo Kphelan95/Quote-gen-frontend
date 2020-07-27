@@ -1,9 +1,7 @@
 <template>
-<body :style="{ 'background-color': background }">
-  <div id="app" >
+  <v-app :style="{ 'background-color': background }">
     <randomQuote v-on:changeBack="test($event)" />
-  </div>
-</body>
+  </v-app>
 </template>
 
 <script>
@@ -41,6 +39,5 @@ body, html {
   margin: 0;
   width: 100%;
   min-height: 100vh;
-  
 }
 </style>
