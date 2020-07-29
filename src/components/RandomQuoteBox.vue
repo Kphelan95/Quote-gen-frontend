@@ -4,8 +4,8 @@
         <h1>{{quote}}</h1>
         <h3>- {{author}} </h3>    
     </div>
-    <button class="left">Delete Quote</button>
-    <Popup> </Popup>
+    <DeleteTable/>
+    <Popup/> 
     <button class="right" v-on:click="newQuote">New Quote</button>
 </div>
 </template>
@@ -14,25 +14,27 @@
 <script>
 import { mapState } from 'vuex';
 import Popup from './Popup'
+import DeleteTable from './DeleteQuoteTable'
 
 export default {
   name: 'randomQuote',
   props: {},
   components: {
-      Popup
+      Popup,
+      DeleteTable
   },
   mounted(){
       this.newQuote();
       this.$store.dispatch('loadQuotes');// this will add to the store when the compent is loaded
   },
   computed: {
-     ...mapState(['test'])
+     ...mapState(['quotesFromDB'])
   },
   methods:{
       //sets the current quoteand emits upthe background color
       newQuote : function(){
 
-          console.log(this.test)
+          console.log(this.quotesFromDB)
 
 
           let holder=Math.floor(Math.random()*10);

@@ -20,15 +20,15 @@ export const store = new Vuex.Store({
             { quote: 'The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart.' , author:"Helen Keller"},
             { quote: 'Whoever is happy will make others happy too', author:"Anne Frank" }
         ],
-        test:[{test : "1"}],
+        quotesFromDB:[{test : "1"}],
     },
     mutations: {
         change(state, quotes) {
           state.quotes = quotes;
         },
-        SAVE_QUOTE(state, test) {
-            state.test = test;// here i need to add on to
-            console.log(test);
+        SAVE_QUOTE(state, quotesFromDB) {
+            state.quotesFromDB = quotesFromDB;// here i need to add on to
+            console.log(quotesFromDB);
           }
     },
     getters: {
