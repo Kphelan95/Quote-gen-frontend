@@ -38,11 +38,18 @@ export const store = new Vuex.Store({
       },
     actions: {
         loadQuotes({commit}) {
-            const request = new Request('http://localhost:3000/quotes', {method: 'GET', headers : { 'Content-Type': 'application/json','Accept': 'application/json','Access-Control-Allow-Origin': '*'} });
-            fetch(request)
-            .then(result =>{return result.json()})
-            .then(data =>{commit('SAVE_QUOTE', data)})
-            .catch(error => {throw new Error(`API ${error}`)})
+          const request = new Request('http://localhost:3000/quotes', {method: 'GET', headers : { 'Content-Type': 'application/json','Accept': 'application/json','Access-Control-Allow-Origin': '*'} });
+          fetch(request)
+          .then(result =>{return result.json()})
+          .then(data =>{commit('SAVE_QUOTE', data)})
+          .catch(error => {throw new Error(`API ${error}`)})
+        },
+        deleteQuote(test,id) {//need to add part to remove it from store, look to use the {commit}
+          console.log("here");
+          const request = new Request('http://localhost:3000/quotes/'+id, {method: 'DELETE', headers : { 'Content-Type': 'application/json','Accept': 'application/json','Access-Control-Allow-Origin': '*'} });
+          fetch(request)
+          .then(result =>{return result.json()})
+          .then(data =>{console.log(data);}); 
         }
       }
 });

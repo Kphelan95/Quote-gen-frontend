@@ -4,6 +4,7 @@
         <h1>{{quote}}</h1>
         <h3>- {{author}} </h3>    
     </div>
+    <deleteTest/>
     <DeleteTable/>
     <Popup/> 
     <button class="right" v-on:click="newQuote">New Quote</button>
@@ -15,13 +16,15 @@
 import { mapState } from 'vuex';
 import Popup from './Popup'
 import DeleteTable from './DeleteQuoteTable'
+import DeleteTest from './DeleteTest'
 
 export default {
   name: 'randomQuote',
   props: {},
   components: {
       Popup,
-      DeleteTable
+      DeleteTable,
+      DeleteTest
   },
   mounted(){
       this.newQuote();
