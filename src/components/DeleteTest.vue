@@ -97,7 +97,7 @@ export default {
       //this is just a method to check the current value of the store, for test purposes
       checkStoreVal(){
           this.dialog = false;
-          console.log(this.model._id);//i need to pass the parm to the
+          ////////////////////console.log(this.model._id);//i need to pass the parm to the
           //console.log(this.quotesFromDB[this.model]);
           //console.log(this.quotesFromDB);
       },
