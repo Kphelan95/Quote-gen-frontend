@@ -56,6 +56,7 @@ export default {
             .then(data =>{console.log(data)})
             .catch(error => {console.log(error)});
             this.$store.dispatch('loadQuotes');//this might not be getting called
+            console.log("here");
         }else{
             console.log("feild is required");
         }

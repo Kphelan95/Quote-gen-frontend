@@ -27,6 +27,9 @@ export const store = new Vuex.Store({
         DELETE_QUOTE(state, id){
           let index = state.quotesFromDB.findIndex(c => c._id == id);
           state.quotesFromDB.splice(index, 1);
+        },
+        UPDATE_QUOTE(state, obj){
+          console.log(obj);
         }
 
     },
@@ -42,11 +45,17 @@ export const store = new Vuex.Store({
           .then(data =>{commit('LOAD_QUOTE', data)})
           .catch(error => {throw new Error(`API ${error}`)})
         },
-        deleteQuote({commit},id) {//need to add part to remove it from store, look to use the {commit}
-          console.log(id);
+        deleteQuote({commit},id) {
           const request = new Request('http://localhost:3000/quotes/'+id, {method: 'DELETE', headers : { 'Content-Type': 'application/json','Accept': 'application/json','Access-Control-Allow-Origin': '*'} });
           fetch(request)
           .then(result =>{ return(result.json()),commit('DELETE_QUOTE', id)})
+          .catch(error => {throw new Error(`API ${error}`)})
+        },
+        updateQuote({commit},updatedOBJ){
+          const data = {"quote": updatedOBJ.updatedQuote ,"author": updatedOBJ.updatedAuthor};
+          const request = new Request('http://localhost:3000/quotes/'+updatedOBJ.id, {method: 'PATCH', headers : { 'Content-Type': 'application/json','Accept': 'application/json','Access-Control-Allow-Origin': '*'},body: JSON.stringify(data) });
+          fetch(request)
+          .then(result =>{ return(result.json()),commit('UPDATE_QUOTE', updatedOBJ)})
           .catch(error => {throw new Error(`API ${error}`)})
         }
       }
