@@ -1,12 +1,16 @@
 <template>
 <div class="test">
-    <div class="random">
-        <h1>{{quote}}</h1>
-        <h3>- {{author}} </h3>    
-    </div>
+    <v-card class="mx-auto">
+        <v-list-item>
+            <v-list-item-content>
+                <v-list-item-title class="headline">{{quote}}</v-list-item-title>
+                <v-list-item-subtitle>- {{author}}</v-list-item-subtitle>
+            </v-list-item-content>
+        </v-list-item>
+    </v-card>
     <deleteTest/>
     <Popup/> 
-    <button class="right" v-on:click="newQuote">New Quote</button>
+    <v-btn class="right" color="primary" dark v-on:click="newQuote">New Quote</v-btn>
 </div>
 </template>
 
@@ -100,4 +104,17 @@ export default {
         text-decoration: none;
         font-size: 20px;
     }
+    .v-application .headline {
+    font-size: 2rem !important;
+    font-weight: 400;
+    line-height: 2.5rem;
+    letter-spacing: normal !important;
+    font-family: "Roboto", sans-serif !important;
+    }
+    .v-list-item__title[data-v-019cb0c2], .v-list-item__subtitle[data-v-019cb0c2] {
+    flex: 1 1 100%;
+    text-overflow: ellipsis;
+    white-space: normal;
+    }
+
 </style>
