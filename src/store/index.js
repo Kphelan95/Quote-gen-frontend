@@ -29,6 +29,12 @@ export const store = new Vuex.Store({
           state.quotesFromDB.splice(index, 1);
         },
         UPDATE_QUOTE(state, obj){
+          let index = state.quotesFromDB.findIndex(c => c._id == obj.id);
+          state.quotesFromDB[index].quote=obj.updatedQuote;
+          state.quotesFromDB[index].author=obj.updatedAuthor;
+          console.log(obj);
+        },
+        ADD_QUOTE(state,obj){
           console.log(obj);
         }
 
@@ -57,6 +63,15 @@ export const store = new Vuex.Store({
           fetch(request)
           .then(result =>{ return(result.json()),commit('UPDATE_QUOTE', updatedOBJ)})
           .catch(error => {throw new Error(`API ${error}`)})
+        },
+        addQuote({commit},newQuote){
+          const data = {"quote": newQuote.quote,"author": newQuote.author};
+          return new Promise((resolve, reject) => {
+            const request = new Request('http://localhost:3000/quotes', {method: 'POST', headers : { 'Content-Type': 'application/json','Accept': 'application/json','Access-Control-Allow-Origin': '*'},body: JSON.stringify(data) });
+            fetch(request)
+            .then(result =>{ return(result.json()),commit('ADD_QUOTE', newQuote),resolve(result)})
+            .catch(error => {console.log(error),reject(error)});
+          })
         }
       }
 });

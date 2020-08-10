@@ -124,6 +124,7 @@ export default {
       deleteVal(){
           this.dialog = false;
           this.$store.dispatch('deleteQuote',this.model._id);
+          this.$store.dispatch('loadQuotes');
       },
       test(){
           this.dialog2 = false;

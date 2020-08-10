@@ -10,7 +10,7 @@
     </v-card>
     <deleteTest/>
     <Popup/> 
-    <v-btn class="right" color="primary" dark v-on:click="newQuote">New Quote</v-btn>
+    <v-btn color="primary" dark v-on:click="newQuote">New Quote</v-btn>
 </div>
 </template>
 
@@ -65,7 +65,7 @@ export default {
         }
         this.background= this.color[Math.floor(Math.random()*6)];
         this.$emit('changeBack',this.background);
-          
+        this.$store.dispatch('loadQuotes');
           //console.log(this.$store.getters.quoteHolderVX[0]);
       }
   }

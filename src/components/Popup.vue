@@ -47,19 +47,23 @@ export default {
     closeAndSave : function(){
         this.dialog = false;
         if(this.quoteUser!="" && this.authorUser!=""){
+          const data = {"quote": this.quoteUser,"author": this.authorUser};
+          //this.$store.dispatch('addQuote',data).finally(this.test());
+          this.$store.dispatch('addQuote',data).then(() => {this.$store.dispatch('loadQuotes');})
 
             //make api call here
-            const data = {"quote": this.quoteUser,"author": this.authorUser};
-            const request = new Request('http://localhost:3000/quotes', {method: 'POST', headers : { 'Content-Type': 'application/json','Accept': 'application/json','Access-Control-Allow-Origin': '*'},body: JSON.stringify(data) });
-            fetch(request)
-            .then(result =>{return result.json()})
-            .then(data =>{console.log(data)})
-            .catch(error => {console.log(error)});
-            this.$store.dispatch('loadQuotes');//this might not be getting called
-            console.log("here");
+            //const data1 = {"quote": this.quoteUser,"author": this.authorUser};
+            //const request = new Request('http://localhost:3000/quotes', {method: 'POST', headers : { 'Content-Type': 'application/json','Accept': 'application/json','Access-Control-Allow-Origin': '*'},body: JSON.stringify(data1) });
+            //fetch(request)
+            //.then(result =>{return result.json()})
+            //.then(data =>{console.log(data)})
+            //.catch(error => {console.log(error)});
         }else{
             console.log("feild is required");
         }
+    },
+    test(){
+      console.log("test");
     }
   }
 }
