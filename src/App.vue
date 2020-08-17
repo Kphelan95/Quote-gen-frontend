@@ -1,25 +1,38 @@
 <template>
   <v-app :style="{ 'background-color': background }">
-    <randomQuote v-on:changeBack="test($event)" />
+   <!-- <randomQuote v-on:changeBack="test($event)" /> -->
+   <!-- <randomQuote v-on:changeBack="newColor()" /> -->
+   <router-view></router-view>
   </v-app>
 </template>
 
 <script>
-import RandomQuote from './components/RandomQuoteBox.vue'
+import { mapState } from 'vuex';
+//import RandomQuote from './components/RandomQuoteBox.vue'
 
 export default {
   name: 'App',
   components: {
-    RandomQuote
+    //RandomQuote
   },
    data: function () {
      return{
        background:"",
      }
   },
+  computed: {
+     ...mapState(['color'])
+  },
+  mounted(){
+      this.newColor();
+  },
   methods:{
      test : function(updatedColor){
         this.background = updatedColor;  
+     },
+     newColor(){
+       let holder=Math.floor(Math.random()*this.color.length);
+       this.background=this.color[holder]
      }
   }
 }

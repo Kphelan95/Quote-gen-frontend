@@ -15,6 +15,7 @@ export const store = new Vuex.Store({
           { quote: 'When you reach the end of your rope, tie a knot in it and hang on.', author:"Franklin D. Roosevelt" }
         ],
         quotesFromDB:[{test : "1"}],
+        color : ["#222f3e","#5f27cd","#f368e0","#ee5253","#0abde3","#10ac84","#5f27cd"]
     },
     mutations: {
         change(state, quotes) {

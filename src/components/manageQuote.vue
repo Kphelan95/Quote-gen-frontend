@@ -1,10 +1,4 @@
 <template>
-<v-dialog v-model="dialog" persistent max-width="600px">
-    <template v-slot:activator="{ on, attrs }">
-        <v-btn color="primary" dark v-bind="attrs" v-on="on">
-           delete a Quote pls
-        </v-btn>
-    </template>
     <v-card>
         <v-card-title>
             <span class="headline">Select a Quote to be deleted</span>
@@ -19,13 +13,12 @@
             <v-list-item :key="quote.quote" :value="quote" v-for="(quote, i) in quotesFromDB" >
               <template>
                 <v-list-item-content class="text-left align-self-start">
-                  <!-- <v-list-item-title @click="test2(quote,authorOne)" v-text="quote.quote" ></v-list-item-title> -->
-                  <v-text-field v-model="quotesFromDB[i].quote" ></v-text-field>
-                  <v-list-item-subtitle v-text="quote.author"></v-list-item-subtitle>
+                  <v-list-item-title @click="test2(quote)" v-text="quotesFromDB[i].quote" ></v-list-item-title> 
+                  <v-list-item-subtitle v-text="quotesFromDB[i].author"></v-list-item-subtitle>
                    <v-divider></v-divider> 
                 </v-list-item-content>
               </template>
-              <v-btn @click="test2(quote,authorOne)">
+              <v-btn @click="test2(quote)">
                     <v-icon>mdi-pencil</v-icon>
                 </v-btn>
                 <v-btn @click="test2(quote.quote)">
@@ -39,11 +32,7 @@
 
         <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="error" text @click=" deleteVal()">delete</v-btn>
-            <v-btn color="blue darken-1" text @click="checkStoreVal()">Close</v-btn>
-       
-
-
+            
         <v-dialog v-model="dialog2" persistent max-width="600px">
         <template v-slot:activator="{ on, attrs }">
           <v-btn color="primary" dark v-bind="attrs" v-on="on" text  @click="saveSelected()">
@@ -75,16 +64,13 @@
         </v-card>
       </v-dialog>
 
+    
+    <v-btn color="error" text @click=" deleteVal()">delete</v-btn>
+    <v-btn color="blue darken-1" to="/" text @click="checkStoreVal()">return</v-btn>
 
     </v-card-actions>
-
-
-
-
-
-        
+     
     </v-card>
-</v-dialog>
 </template>
 
 

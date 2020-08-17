@@ -11,6 +11,7 @@
     <deleteTest/>
     <Popup/> 
     <v-btn color="primary" dark v-on:click="newQuote">New Quote</v-btn>
+    <v-btn color="primary" to="/manageQuote" >click me</v-btn>
 </div>
 </template>
 
@@ -38,10 +39,7 @@ export default {
             { quote: 'When you reach the end of your rope, tie a knot in it and hang on.', author:"Franklin D. Roosevelt" }
         ],
         quote:"",
-        author:"",
-        color : ["#222f3e","#5f27cd","#f368e0","#ee5253","#0abde3","#10ac84","#5f27cd"],
-        background:"",
-        counter:0
+        author:""
       }
     },
   mounted(){
@@ -63,8 +61,7 @@ export default {
             this.quote =this.quoteHolder[holder].quote;
             this.author=this.quoteHolder[holder].author;
         }
-        this.background= this.color[Math.floor(Math.random()*6)];
-        this.$emit('changeBack',this.background);
+        this.$emit('changeBack');
         this.$store.dispatch('loadQuotes');
           //console.log(this.$store.getters.quoteHolderVX[0]);
       }
