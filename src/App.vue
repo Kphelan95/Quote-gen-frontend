@@ -1,19 +1,15 @@
 <template>
   <v-app :style="{ 'background-color': background }">
-   <!-- <randomQuote v-on:changeBack="test($event)" /> -->
-   <!-- <randomQuote v-on:changeBack="newColor()" /> -->
    <router-view></router-view>
   </v-app>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-//import RandomQuote from './components/RandomQuoteBox.vue'
 
 export default {
   name: 'App',
   components: {
-    //RandomQuote
   },
    data: function () {
      return{
@@ -45,7 +41,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  padding-top: 20%;
+  padding-top: 20%; /* this is whats causeing my problem */
 }
 body, html {
   padding: 0;

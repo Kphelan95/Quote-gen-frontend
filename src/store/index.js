@@ -59,11 +59,13 @@ export const store = new Vuex.Store({
           .catch(error => {throw new Error(`API ${error}`)})
         },
         updateQuote({commit},updatedOBJ){
+          console.log(updatedOBJ);
           const data = {"quote": updatedOBJ.updatedQuote ,"author": updatedOBJ.updatedAuthor};
           const request = new Request('http://localhost:3000/quotes/'+updatedOBJ.id, {method: 'PATCH', headers : { 'Content-Type': 'application/json','Accept': 'application/json','Access-Control-Allow-Origin': '*'},body: JSON.stringify(data) });
           fetch(request)
           .then(result =>{ return(result.json()),commit('UPDATE_QUOTE', updatedOBJ)})
-          .catch(error => {throw new Error(`API ${error}`)})
+          .catch(error => {console.log(error)})
+          //.catch(error => {throw new Error(`API ${error}`)})
         },
         addQuote({commit},newQuote){
           const data = {"quote": newQuote.quote,"author": newQuote.author};

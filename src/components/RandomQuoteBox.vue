@@ -8,10 +8,9 @@
             </v-list-item-content>
         </v-list-item>
     </v-card>
-    <deleteTest/>
     <Popup/> 
-    <v-btn color="primary" dark v-on:click="newQuote">New Quote</v-btn>
-    <v-btn color="primary" to="/manageQuote" >click me</v-btn>
+    <v-btn color="primary" to="/manageQuote" >manage Quotes</v-btn>
+    <v-btn color="primary" dark v-on:click="newQuote">Get a new quote</v-btn>
 </div>
 </template>
 
@@ -19,14 +18,12 @@
 <script>
 import { mapState } from 'vuex';
 import Popup from './Popup'
-import DeleteTest from './DeleteTest'
 
 export default {
   name: 'randomQuote',
   props: {},
   components: {
-      Popup,
-      DeleteTest
+      Popup
   },
   data : function (){
       return{
@@ -50,20 +47,17 @@ export default {
      ...mapState(['quotesFromDB'])
   },
   methods:{
-      //sets the current quoteand emits upthe background color
       newQuote : function(){
         let holder=Math.floor(Math.random()*this.quotesFromDB.length);
         if(this.quotesFromDB.length!=1){ 
             this.quote =this.quotesFromDB[holder].quote;
             this.author=this.quotesFromDB[holder].author;
         }else{
-            console.log(this.quotesFromDB.length);
             this.quote =this.quoteHolder[holder].quote;
             this.author=this.quoteHolder[holder].author;
         }
         this.$emit('changeBack');
         this.$store.dispatch('loadQuotes');
-          //console.log(this.$store.getters.quoteHolderVX[0]);
       }
   }
 }
