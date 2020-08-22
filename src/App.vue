@@ -1,6 +1,8 @@
 <template>
   <v-app :style="{ 'background-color': background }">
-   <router-view></router-view>
+    <div class="vertical-center">
+      <router-view v-on:changeBack="newColor()"></router-view>
+    </div>
   </v-app>
 </template>
 
@@ -13,7 +15,7 @@ export default {
   },
    data: function () {
      return{
-       background:"",
+       background:""
      }
   },
   computed: {
@@ -27,8 +29,8 @@ export default {
         this.background = updatedColor;  
      },
      newColor(){
-       let holder=Math.floor(Math.random()*this.color.length);
-       this.background=this.color[holder]
+       let randomNum=Math.floor(Math.random()*this.color.length);
+       this.background=this.color[randomNum];
      }
   }
 }
@@ -41,12 +43,15 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  padding-top: 20%; /* this is whats causeing my problem */
 }
 body, html {
   padding: 0;
   margin: 0;
   width: 100%;
   min-height: 100vh;
+}
+.vertical-center {
+  display:flex;
+  align-items:center;
 }
 </style>

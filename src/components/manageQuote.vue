@@ -1,7 +1,7 @@
 <template>
-    <v-card>
+    <v-card class="center"> 
         <v-card-title>
-            <span class="headline">Select a Quote to be deleted</span>
+            <span class="headline">Manage Quotes</span>
         </v-card-title>
         <v-list two-line>
             <v-list-item :key="quote.quote" :value="quote" v-for="(quote, i) in quotesFromDB" >
@@ -104,3 +104,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+</style>
