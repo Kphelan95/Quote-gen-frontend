@@ -1,16 +1,18 @@
 <template>
 <div class="center">
     <v-card class="mx-auto">
-        <v-list-item>
-            <v-list-item-content>
-                <v-list-item-title class="headline">{{quote}}</v-list-item-title>
-                <v-list-item-subtitle>- {{author}}</v-list-item-subtitle>
-            </v-list-item-content>
-        </v-list-item>
+        <div class="border">
+            <v-list-item>
+                <v-list-item-content>    
+                    <v-list-item-title class="headline">{{quote}}</v-list-item-title>
+                    <v-list-item-subtitle>- {{author}}</v-list-item-subtitle>
+                </v-list-item-content>
+            </v-list-item>
+        </div>
     </v-card>
-    <v-btn color="primary" to="/manageQuote" >manage Quotes</v-btn>
-    <Popup/> 
-    <v-btn color="primary" dark v-on:click="newQuote">Get a new quote</v-btn>
+    <v-btn  color="primary" to="/manageQuote" >manage quotes</v-btn> 
+    <Popup class="ma-5"/> 
+    <v-btn class="ma-5" color="primary" dark v-on:click="newQuote">new quote</v-btn>
 </div>
 </template>
 
@@ -40,7 +42,7 @@ export default {
   },
   methods:{
       newQuote : function(){
-        let holder=Math.floor(Math.random()*this.$store.state.quoteHolder.length);
+        let holder=Math.floor(Math.random()*this.$store.state.quotesFromDB.length);
         if(this.quotesFromDB.length!=1){ 
             this.quote =this.quotesFromDB[holder].quote;
             this.author=this.quotesFromDB[holder].author;
@@ -76,6 +78,11 @@ export default {
         flex: 1 1 100%;
         text-overflow: ellipsis;
         white-space: normal;
+    }
+    .v-application .border{
+        border: black;
+        border-style: solid;
+        min-width: 500px;
     }
 
 </style>

@@ -23,7 +23,7 @@ export const store = new Vuex.Store({
         },
         LOAD_QUOTE(state, quotesFromDB) {
             state.quotesFromDB = quotesFromDB;// here i need to add on to
-            console.log(quotesFromDB);
+            //console.log(quotesFromDB);
         },
         DELETE_QUOTE(state, id){
           let index = state.quotesFromDB.findIndex(c => c._id == id);
@@ -33,7 +33,7 @@ export const store = new Vuex.Store({
           let index = state.quotesFromDB.findIndex(c => c._id == obj.id);
           state.quotesFromDB[index].quote=obj.updatedQuote;
           state.quotesFromDB[index].author=obj.updatedAuthor;
-          console.log(obj);
+          //console.log(obj);
         },
         ADD_QUOTE(state,obj){
           console.log(obj);
