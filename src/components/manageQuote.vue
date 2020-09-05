@@ -27,7 +27,7 @@
         </div> <!-- scroll -->
         <v-card-actions>
         <v-spacer></v-spacer>
-                
+        <Popup/>       
         <v-btn color="blue darken-1" to="/" text>return</v-btn>
         
             <v-dialog v-model="dialog" persistent max-width="600px">
@@ -63,7 +63,7 @@
 
 <script>
 import { mapState } from 'vuex';
-
+import Popup from './Popup'
 
 export default {
    data: () => ({
@@ -76,6 +76,9 @@ export default {
       id:""
     }
   }),
+  components: {
+      Popup
+  },
   computed: {
      ...mapState(['quotesFromDB']),
      headers(){
