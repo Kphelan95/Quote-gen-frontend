@@ -4,7 +4,6 @@ import { store } from './store/'
 import vuetify from './plugins/vuetify'
 import VueRouter from 'vue-router'
 import randomeQuote from './components/RandomQuoteBox.vue'
-//import manageQuote from './components/DeleteTest.vue'
 import manage from './components/manageQuote.vue'
 
 

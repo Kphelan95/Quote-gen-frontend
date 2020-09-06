@@ -3,13 +3,13 @@
 
   <v-navigation-drawer v-model="drawer" app clipped>
       <v-list dense>
-        <v-list-item v-for="item in items" :key="item.text" link>
+        <v-list-item v-for="item in items" :key="item.text" link :to="item.url">
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
-          <v-list-item-content>
+          <v-list-item-content >
             <v-list-item-title>
-              <v-btn  text :to="item.url"> {{ item.text }}</v-btn>
+              {{ item.text }}
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>

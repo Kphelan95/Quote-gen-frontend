@@ -19,7 +19,7 @@
                             <v-icon>mdi-pencil</v-icon>
                         </v-btn>
                         <v-btn @click="deleteValInline(quotesFromDB[i])">
-                            <v-icon color="error" >mdi-delete</v-icon>
+                            <v-icon >mdi-delete</v-icon>
                         </v-btn>
                     </v-list-item>
                 </v-list>
@@ -27,7 +27,7 @@
         </div> <!-- scroll -->
         <v-card-actions>
         <v-spacer></v-spacer>
-        <Popup/>       
+        <Popup screen="manageQuote" />
         <v-btn color="blue darken-1" to="/" text>return</v-btn>
         
             <v-dialog v-model="dialog" persistent max-width="600px">
@@ -105,8 +105,10 @@ export default {
         this.dialog = true;
       },
       deleteValInline(quoteObj){
-        this.$store.dispatch('deleteQuote',quoteObj._id);// needs to be changed
-        this.$store.dispatch('loadQuotes');
+          if(confirm("Do you really want to delete this quote?")){
+            this.$store.dispatch('deleteQuote',quoteObj._id);// needs to be changed
+            this.$store.dispatch('loadQuotes');
+          }
       }
   }
 }
@@ -121,8 +123,8 @@ export default {
     transform: translate(-50%, -50%);
 }
 .border{
-        border: black;
-        border-style: solid;
-        min-width: 500px;
+    border: black;
+    border-style: solid;
+    min-width: 500px;
     }
 </style>

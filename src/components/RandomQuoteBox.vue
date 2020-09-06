@@ -10,8 +10,7 @@
             </v-list-item>
         </div>
     </v-card>
-   <!-- <v-btn  color="primary" to="/manageQuote" >manage quotes</v-btn> -->
-    <Popup class="ma-5"/> 
+    <Popup screen="home" class="ma-5"/> 
     <v-btn class="ma-5" color="primary" dark v-on:click="newQuote">new quote</v-btn>
 </div>
 </template>
