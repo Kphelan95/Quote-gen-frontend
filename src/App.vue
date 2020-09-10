@@ -1,7 +1,7 @@
 <template>
   <v-app :style="{ 'background-color': background }">
 
-  <v-navigation-drawer v-model="drawer" app clipped>
+  <v-navigation-drawer v-model="drawer" app clipped color=#e3e3e3>
       <v-list dense>
         <v-list-item v-for="item in items" :key="item.text" link :to="item.url">
           <v-list-item-action>
@@ -41,8 +41,9 @@ export default {
        background:"",
        drawer: null,
        items: [
-        { icon: 'mdi-youtube-subscription', text: 'Home', url:'/' },
-        { icon: 'mdi-trending-up', text: 'manage quotes', url:'/manageQuote' },
+        { icon: 'mdi-home', text: 'Home', url:'/' },
+        { icon: 'mdi-view-dashboard', text: 'Manage Quotes', url:'/manageQuote' },
+        { icon: 'mdi-help-box', text: 'About', url:'/about' },
       ]
      }
   },
@@ -53,12 +54,13 @@ export default {
       this.newColor();
   },
   methods:{
-     test : function(updatedColor){
-        this.background = updatedColor;  
-     },
      newColor(){
        let randomNum=Math.floor(Math.random()*this.color.length);
-       this.background=this.color[randomNum];
+       if(this.background===this.color[randomNum]){
+         this.newColor();
+       }else{
+         this.background=this.color[randomNum];
+       }
      }
   }
 }
