@@ -10,7 +10,7 @@
             </v-list-item>
         </div>
     </v-card>
-    <Popup screen="home" class="ma-5"/> 
+   
     <v-btn class="ma-5" color="primary" dark v-on:click="newQuote">new quote</v-btn>
 </div>
 </template>
@@ -18,14 +18,10 @@
 
 <script>
 import { mapState } from 'vuex';
-import Popup from './Popup'
 
 export default {
   name: 'randomQuote',
   props: {},
-  components: {
-      Popup
-  },
   data : function (){
       return{
         quote:"",
@@ -43,8 +39,12 @@ export default {
       newQuote : function(){
         let holder=Math.floor(Math.random()*this.$store.state.quotesFromDB.length);
         if(this.quotesFromDB.length!=1){ 
-            this.quote =this.quotesFromDB[holder].quote;
-            this.author=this.quotesFromDB[holder].author;
+            if(this.quote!=this.quotesFromDB[holder].quote){
+                this.quote =this.quotesFromDB[holder].quote;
+                this.author=this.quotesFromDB[holder].author;
+            }else{
+                this.newQuote();
+            }
         }else{
             this.quote =this.$store.state.quoteHolder[holder].quote;
             this.author=this.$store.state.quoteHolder[holder].author;

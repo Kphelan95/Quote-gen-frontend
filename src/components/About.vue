@@ -1,5 +1,5 @@
 <template>
-    <h1 class="center" >the current version {{version}}</h1>
+    <h1 class="center" >current version {{version}}</h1>
 </template>
 
 
